@@ -4,12 +4,16 @@ metadata:
   name: istio-rollout-vsvc
 spec:
   gateways:
-  - istio-rollout-gateway
+  - default/bookinfo-gateway
   hosts:
-  - istio-rollout.apps.argoproj.io
-  - istio-rollout.local
+  - '*'
+  # - istio-rollout.apps.argoproj.io
+  # - istio-rollout.local
   http:
   - name: primary
+  - match:
+    - uri:
+        prefix: /rollout
     route:
     - destination:
         host: istio-rollout-stable
