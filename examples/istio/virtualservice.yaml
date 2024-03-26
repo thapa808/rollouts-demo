@@ -11,9 +11,6 @@ spec:
   # - istio-rollout.local
   http:
   - name: primary
-  - match:
-    - uri:
-        prefix: /rollout
     route:
     - destination:
         host: istio-rollout-stable
